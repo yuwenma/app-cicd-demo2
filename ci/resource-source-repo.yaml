@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: app-git-repo
+  namespace: 'ci' # {"type":"string","x-kustomize":{"setter":{"name":"namespace","value":"ci"}}}
+spec:
+  type: git
+  params:
+  - name: revision
+    value: master
+  - name: url
+    value: 'https://github.com/yuwenma/app-cicd-demo2' # {"type":"string","x-kustomize":{"setter":{"name":"src_repo","value":"https://github.com/yuwenma/app-cicd-demo2"}}}
