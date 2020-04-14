@@ -1,0 +1,11 @@
+apiVersion: kpt.dev/v1alpha1
+kind: Kptfile
+metadata:
+    name: app-cicd-demo2
+upstream:
+    type: git
+    git:
+        commit: 1e2f22d36f4f2617a3e99fe1b504c32ded63eaf7
+        repo: git@github.com:yuwenma/app-cicd-sample
+        directory: /app-config
+        ref: master
