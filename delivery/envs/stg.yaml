@@ -3,4 +3,4 @@ project: yuwen-cicd-demo2
 compute: # choose "region" or "zone"
   zone: us-central1-f
 namespace: app-cicd-demo2-stg
-no_pr_approval_required: false
+no_pr_approval_required: true
