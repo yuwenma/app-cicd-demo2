@@ -9,4 +9,4 @@ spec:
   - name: revision
     value: master
   - name: url
-    value: 'app-cicd-demo2' # {"type":"string","x-kustomize":{"setter":{"name":"src_repo","value":"app-cicd-demo2"}}}
+    value: 'https://github.com/yuwenma/app-cicd-demo2' # {"type":"string","x-kustomize":{"setter":{"name":"src_repo","value":"https://github.com/yuwenma/app-cicd-demo"}}}

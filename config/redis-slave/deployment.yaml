@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: slave
-        image: gcr.io/rmlite-playground/guestbook-redis-slave:v1.0.0
+        image:  "[GCR_IMG_1]" # {"type":"string","x-kustomize":{"setter":{"name":"gcr_img_1","value":"[GCR_IMG_1]"}}}
         resources:
           requests:
             cpu: 100m

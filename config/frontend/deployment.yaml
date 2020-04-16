@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: php-redis
-        image: gcr.io/rmlite-playground/guestbook-redis:v1.0.0
+        image: "[GCR_IMG_2]" # {"type":"string","x-kustomize":{"setter":{"name":"gcr_img_2","value":"[GCR_IMG_2]"}}}
         resources:
           requests:
             cpu: 100m
