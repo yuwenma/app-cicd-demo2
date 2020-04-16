@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: demo-pipeline
-  namespace: 'ci' # {"type":"string","x-kustomize":{"setter":{"name":"namespace","value":"ci"}}}
+  namespace: 'cicd' # {"type":"string","x-kustomize":{"setter":{"name":"namespace","value":"cicd"}}}
 spec:
   resources:
   - name: source-repo

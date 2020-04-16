@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: build-and-push
-  namespace: "ci" # {"type":"string","x-kustomize":{"setter":{"name":"namespace","value":"ci"}}}
+  namespace: "cicd" # {"type":"string","x-kustomize":{"setter":{"name":"namespace","value":"cicd"}}}
 spec:
   params:
   - name: pathToDockerFile
