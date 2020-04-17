@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  name: 'pipeline-run-1587026720' # {"type":"string","x-kustomize":{"setter":{"name":"pipeline-run","value":"ci-run"}}}
+  name: 'ci-run' # {"type":"string","x-kustomize":{"setter":{"name":"pipeline-run","value":"ci-run"}}}
   namespace: 'cicd' # {"type":"string","x-kustomize":{"setter":{"name":"namespace","value":"cicd"}}}
 spec:
   resources:
@@ -16,4 +16,3 @@ spec:
       name: guestbook-app-image
   pipelineRef:
     name: demo-pipeline
-    # serviceAccountName: cicd-sa

@@ -5,7 +5,7 @@ metadata:
 upstream:
     type: git
     git:
-        commit: 174049dcda65856241997c17d8eea2c428cbefa3
+        commit: d839ca3ae4ccfcb9738403516aa089d37ce59b97
         repo: https://source.developers.google.com/p/anthos-cli-alpha/r/onboarding-blueprints
         directory: /blueprint-ci/ci
         ref: master
