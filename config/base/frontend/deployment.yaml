@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: php-redis
-        image: "gcr.io/yuwen-cicd-demo2/ci-frontend1" # {"type":"string","x-kustomize":{"setter":{"name":"gcr_img_2","value":"gcr.io/yuwen-cicd-demo2/ci-frontend1"}}}
+        image: "[IMG_2]" # {"type":"string","x-kustomize":{"setter":{"name":"gcr_img_2","value":"[IMG_2]"}}}
         resources:
           requests:
             cpu: 100m

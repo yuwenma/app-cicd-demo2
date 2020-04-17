@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: slave
-        image: "gcr.io/yuwen-cicd-demo2/ci-redisslave1" # {"type":"string","x-kustomize":{"setter":{"name":"gcr_img_1","value":"gcr.io/yuwen-cicd-demo2/ci-redisslave1"}}}
+        image: "[IMG_1]" # {"type":"string","x-kustomize":{"setter":{"name":"gcr_img_1","value":"[IMG_1]"}}}
         resources:
           requests:
             cpu: 100m
