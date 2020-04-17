@@ -16,3 +16,4 @@ spec:
       name: guestbook-app-image
   pipelineRef:
     name: demo-pipeline
+  serviceAccountName: cicd-sa
