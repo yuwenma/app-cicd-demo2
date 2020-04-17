@@ -3,7 +3,7 @@
   "fileExistenceTests": [
     {
       "name": "bootstrap",
-      "path": "/run.sh",
+      "path": "/yuwen.txt",
       "shouldExist": true,
       "uid": -1,
       "gid": -1
