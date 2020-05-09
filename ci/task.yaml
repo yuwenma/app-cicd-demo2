@@ -11,6 +11,8 @@ spec:
   - name: pathToContext
     default: /workspace/workspace
     description: The build context used by Kaniko (https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)
+  - name: skaffoldConfig
+    default: skaffold.yaml
   resources:
     inputs:
     - name: workspace
@@ -18,23 +20,49 @@ spec:
     outputs:
     - name: builtImage
       type: image
+#   steps:
+#   - name: build-and-push
+#     image: gcr.io/kaniko-project/executor:v0.15.0
+#     command:
+#     - /kaniko/executor
+#     args:
+#     - --dockerfile=$(params.pathToDockerFile)
+#     - --destination=$(resources.outputs.builtImage.url)
+#     - --context=$(params.pathToContext)
+#     # specifying DOCKER_CONFIG is required to allow kaniko to detect docker credential
+#     env:
+#     - name: GOOGLE_APPLICATION_CREDENTIALS
+#       value: /secret/kaniko-secret.json
+#     volumeMounts:
+#     - name: kaniko-secret
+#       mountPath: /secret
+#   volumes:
+#   - name: kaniko-secret
+#     secret:
+#       secretName: kaniko-secret # {"type":"string","x-kustomize":{"setter":{"name":"gsa-key-file","value":"kaniko-secret"}}}
+
   steps:
-  - name: build-and-push
-    image: gcr.io/kaniko-project/executor:v0.15.0
+  - name: run-skaffold-build
+    image: gcr.io/k8s-skaffold/skaffold:v1.5.0 # also tested v1.4.0
     command:
-    - /kaniko/executor
+    - skaffold
+    - build
     args:
-    - --dockerfile=$(params.pathToDockerFile)
-    - --destination=$(resources.outputs.builtImage.url)
-    - --context=$(params.pathToContext)
-    # specifying DOCKER_CONFIG is required to allow kaniko to detect docker credential
-    env:
-    - name: GOOGLE_APPLICATION_CREDENTIALS
-      value: /secret/kaniko-secret.json
-    volumeMounts:
-    - name: kaniko-secret
-      mountPath: /secret
-  volumes:
-  - name: kaniko-secret
-    secret:
-      secretName: kaniko-secret # {"type":"string","x-kustomize":{"setter":{"name":"gsa-key-file","value":"kaniko-secret"}}}
+    - --filename
+    - $(params.skaffoldConfig) # location of my skaffold.yaml 
+    - --profile
+    - oncluster 
+    - --file-output
+    - build.out
+    workingDir: /workspace/workspace
+    resources: {}
+#     env:
+#     - name: GOOGLE_APPLICATION_CREDENTIALS
+#       value: /secret/kaniko-secret  # tried both kaniko-secret and kaniko-secret.json (the file name contained in the k8s kaniko-secret). The skaffold/examples folder seems to have both formats.
+#     volumeMounts:
+#     - name: kaniko-secret
+#       mountPath: /secret
+#   volumes:
+#   - name: kaniko-secret
+#     secret:
+#       secretName: kaniko-secret

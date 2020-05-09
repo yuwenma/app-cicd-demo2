@@ -1,0 +1,13 @@
+apiVersion: skaffold/v2beta3
+kind: Config
+metadata: 
+  name: app-cicd-demo-
+profiles:
+  - name: oncluster
+    build:
+      artifacts:
+        - image: gcr.io/yuwen-cicd-demo2/ci-redisslave1
+          context: redis-slave
+          kaniko: 
+            dockerfile: /workspace/workspace/redis-slave/Dockerfile
+#            dockerfile: ./redis-slave/Dockerfile
