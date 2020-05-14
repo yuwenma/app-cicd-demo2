@@ -13,3 +13,4 @@ profiles:
       cluster:
         pullSecretName: kaniko-secret
         namespace: cicd
+        serviceAccount: cicd-ksa
