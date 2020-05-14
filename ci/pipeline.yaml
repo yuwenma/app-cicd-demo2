@@ -12,21 +12,21 @@ spec:
   - name: app-image
     type: image
   tasks:
-  - name: build-frontend
-    resources:
-      inputs:
-      - name: workspace
-        resource: source-repo
-      outputs:
-      - name: builtImage
-        resource: web-image
-    params:
-    - name: pathToDockerFile
-      value: Dockerfile
-    - name: pathToContext
-      value: /workspace/workspace/php-redis/
-    taskRef:
-      name: build-and-push
+#   - name: build-frontend
+#     resources:
+#       inputs:
+#       - name: workspace
+#         resource: source-repo
+#       outputs:
+#       - name: builtImage
+#         resource: web-image
+#     params:
+#     - name: pathToDockerFile
+#       value: Dockerfile
+#     - name: pathToContext
+#       value: /workspace/workspace/php-redis/
+#     taskRef:
+#       name: build-and-push
   - name: build-app
     resources:
       inputs:
@@ -42,19 +42,19 @@ spec:
       value: /workspace/workspace/redis-slave/
     taskRef:
       name: build-and-push
-    runAfter:
-    - build-frontend
-  - name: test-redis-image
-    resources:
-      inputs:
-      - name: workspace
-        resource: source-repo
-      - name: builtImage
-        resource: app-image
-    params:
-    - name: pathToConfig
-      value: /workspace/workspace/config.json
-    taskRef:
-      name: container-structure-test
-    runAfter:
-    - build-app
+#    runAfter:
+#    - build-frontend
+#  - name: test-redis-image
+#    resources:
+#      inputs:
+#      - name: workspace
+#        resource: source-repo
+#      - name: builtImage
+#        resource: app-image
+#    params:
+#    - name: pathToConfig
+#      value: /workspace/workspace/config.json
+#    taskRef:
+#      name: container-structure-test
+#    runAfter:
+#    - build-app

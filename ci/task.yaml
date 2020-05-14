@@ -43,7 +43,7 @@ spec:
 
   steps:
   - name: run-skaffold-build
-    image: gcr.io/k8s-skaffold/skaffold:v1.5.0 # also tested v1.4.0
+    image: gcr.io/k8s-skaffold/skaffold
     command:
     - skaffold
     - build
@@ -52,17 +52,15 @@ spec:
     - $(params.skaffoldConfig) # location of my skaffold.yaml 
     - --profile
     - oncluster 
-    - --file-output
-    - build.out
     workingDir: /workspace/workspace
     resources: {}
 #     env:
 #     - name: GOOGLE_APPLICATION_CREDENTIALS
-#       value: /secret/kaniko-secret  # tried both kaniko-secret and kaniko-secret.json (the file name contained in the k8s kaniko-secret). The skaffold/examples folder seems to have both formats.
-#     volumeMounts:
-#     - name: kaniko-secret
-#       mountPath: /secret
-#   volumes:
-#   - name: kaniko-secret
-#     secret:
-#       secretName: kaniko-secret
+#       value: /secret  # tried both kaniko-secret and kaniko-secret.json (the file name contained in the k8s kaniko-secret). The skaffold/examples folder seems to have both formats.
+    volumeMounts:
+    - name: kaniko-secret
+      mountPath: /kaniko-secret
+  volumes:
+  - name: kaniko-secret
+    secret:
+      secretName: kaniko-secret
