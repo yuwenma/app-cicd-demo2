@@ -1,5 +1,5 @@
 kind: WebStore
-apiVersion: marketplace.com/v1
+apiVersion: marketplace.com/v2
 metadata:
   name: gameplace
 spec:
