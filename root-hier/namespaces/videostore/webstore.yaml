@@ -1,5 +1,5 @@
 kind: WebStore
-apiVersion: marketplace.com/v2
+apiVersion: marketplace.com/v1
 metadata:
   name: vidrent
 spec:
