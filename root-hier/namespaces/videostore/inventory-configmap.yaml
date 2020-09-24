@@ -5,6 +5,6 @@ metadata:
   annotations:
     marketplace.com/comments: "Too much sci-fi"
 data:
-  action: 30
-  documentary: 5
-  sci_fi: 1000
+  action: "30"
+  documentary: "5"
+  sci_fi: "1000"
